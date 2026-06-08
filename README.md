@@ -1,4 +1,4 @@
-# apex-on-linux-docs
+# The Manual
 
 There is a step-by-step manual how to deploy Oracle APEX on Oracle Linux 9 OS
 

@@ -16,6 +16,8 @@ Download page: https://www.oracle.com/database/technologies/free-downloads.html
 
 Download `oracle-ai-database-free-26ai-23.26.2-1.el9.x86_64.rpm` RPM file required for performing an RPM-based installation to a directory of your choice.
 
+*Note: time after time the Oracle updates version available to download, so exact file names can be different. Take it in account.*
+
 ## Install database software
 ```
 sudo dnf -y install oracle-ai-database-free-26ai-23.26.2-1.el9.x86_64.rpm
@@ -56,3 +58,86 @@ After the configuration completes, the database and listener are started.
 | /opt/oracle/cfgtoollogs/dbca/FREE | Database creation logs. The FREE.log file contains the results of the database creation script execution. |
 | /etc/sysconfig/oracle-free-26ai.conf | Configuration default parameters. |
 | /etc/init.d/oracle-free-26ai | Configuration and services script |
+
+## Setting Oracle AI Database Free Environment Variables
+
+- Switch to user `oracle`
+```
+sudo -iu oracle
+```
+- Edit `.bash_profile`
+```
+nano ~/.bash_profile
+```
+Add this at the end:
+```
+export ORACLE_SID=FREE
+export ORACLE_HOME=/opt/oracle/product/26ai/dbhomeFree
+export PATH=$ORACLE_HOME/bin:$PATH
+export NLS_LANG=AMERICAN_AMERICA.AL32UTF8
+```
+Save and exit.
+- Reload the profile
+```
+source ~/.bash_profile
+```
+At this point you can call sqlplus under oracle user without path specification
+
+## Connecting to Oracle AI Database
+Please make sure the listener port (`1521`) is accessible from outside.
+
+To check the firewall status:
+```
+sudo firewall-cmd --state
+```
+if it says:
+```
+running
+```
+open port `1521`:
+```
+sudo firewall-cmd --add-port=1521/tcp --permanent
+sudo firewall-cmd --reload
+```
+then verify:
+```
+sudo firewall-cmd --list-ports
+```
+you should see:
+```
+1521/tcp
+```
+
+At this moment Oracle AI Database Free is installed and accessible to connect.
+
+## Automating Shutdown and Start-Up
+Oracle recommends that you configure the system to automatically start Oracle AI Database Free when the system starts, and to automatically shut it down when the system shuts down.
+
+To automate the start up and shutdown of the listener and database, run the following commands as `root`:
+```
+$ sudo -s
+```
+For Oracle Linux 8 and Oracle Linux 9:
+```
+# systemctl daemon-reload
+# systemctl enable oracle-free-26ai
+```
+
+### Checking status
+```
+/etc/init.d/oracle-free-26ai status
+```
+### Starting
+```
+systemctl start oracle-free-26ai
+```
+### Stopping
+```
+systemctl stop oracle-free-26ai
+```
+### Restarting
+```
+systemctl restart oracle-free-26ai
+```
+
+

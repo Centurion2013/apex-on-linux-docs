@@ -92,10 +92,7 @@ ords --version
 ## Install/configure ORDS into `FREEPDB1`
 Run ORDS installer as the ords OS account:
 ```
-sudo -u ords -H /opt/ords/current/bin/ords \
-  --config /etc/ords/config \
-  install --interactive \
-  --log-folder /var/log/ords
+sudo -u ords -H /opt/ords/current/bin/ords --config /etc/ords/config install --interactive --log-folder /var/log/ords
 ```
 Use these answers:
 
@@ -125,9 +122,7 @@ sudo find /etc/ords/config -type d -exec chmod 750 {} \;
 ## If you use APEX, enable PL/SQL Gateway mode
 APEX requires PL/SQL Gateway access through ORDS. Oracle documents setting `plsql.gateway.mode` to `proxied`.
 ```
-sudo -u ords -H /opt/ords/current/bin/ords \
-  --config /etc/ords/config \
-  config set plsql.gateway.mode proxied
+sudo -u ords -H /opt/ords/current/bin/ords --config /etc/ords/config  config set plsql.gateway.mode proxied
 ```
 
 ## Tell Tomcat where ORDS config is
