@@ -29,9 +29,8 @@ sudo dnf -y install oracle-ai-database-free*
 ## Creating and Configuring an Oracle AI Database
 The configuration script creates a container database (`FREE`) with one pluggable database (`FREEPDB1`) and configures the listener at the default port (`1521`).
 
-You can modify the configuration parameters by editing the `/etc/sysconfig/oracle-free–26ai.conf file`.
-
-The parameters set in this file are explained in detail in the silent mode installation procedure Oracle's online documentation: [Performing a Silent Installation](https://docs.oracle.com/en/database/oracle/oracle-database/26/xeinl/installing-oracle-database-free.html#GUID-3F29EE7C-4546-49EE-B894-027EE3E371BF).
+*You can modify the configuration parameters by editing the `/etc/sysconfig/oracle-free–26ai.conf file`.*
+*The parameters set in this file are explained in detail in the silent mode installation procedure Oracle's online documentation: [Performing a Silent Installation](https://docs.oracle.com/en/database/oracle/oracle-database/26/xeinl/installing-oracle-database-free.html#GUID-3F29EE7C-4546-49EE-B894-027EE3E371BF).*
 
 To create the database with the default settings:
 
