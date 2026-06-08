@@ -15,6 +15,6 @@ Follow the installation instructions during installation. No additional steps ar
 ## Post-install
 Do update OS software after installation:
 
-```
+```console
 sudo dnf update -y
 ```
