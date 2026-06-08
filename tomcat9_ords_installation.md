@@ -166,3 +166,22 @@ sudo firewall-cmd --reload
 
 sudo firewall-cmd --list-ports
 ```
+
+## Final verification checklist
+```console
+# Java
+java -version
+
+# Tomcat
+systemctl status tomcat --no-pager
+ss -lntp | grep 8080
+
+# ORDS CLI
+/opt/ords/current/bin/ords --version
+
+# ORDS config
+sudo -u ords -H /opt/ords/current/bin/ords --config /etc/ords/config config list
+
+# Web access
+curl -I http://localhost:8080/ords/
+```
