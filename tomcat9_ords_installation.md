@@ -18,7 +18,7 @@ Tomcat and ORDS will be installed for separate users with limited rights.
 |ORDS owner|ords|
 
 ## Install Java 17
-```
+```console
 sudo dnf update -y
 
 sudo dnf install -y java-17-openjdk-devel unzip curl firewalld policycoreutils-python-utils
@@ -28,26 +28,20 @@ java -version
 
 ## Install Tomcat9
 Oracle Linux 9 includes an Apache Tomcat 9 package. ([docs.oracle.com](https://docs.oracle.com/en/operating-systems/oracle-linux/9/relnotes9.2/ol9-NewFeaturesandChanges.html))
-```
+```console
 sudo dnf install -y tomcat
 sudo systemctl enable --now tomcat
 sudo systemctl status tomcat --no-pager
 ```
 Check that the package created the Tomcat OS user:
-```
+```console
 id tomcat
 ```
 
 ## Create an OS account for ORDS configuration
 This account owns ORDS configuration and wallets. Tomcat will only be allowed to read them.
-```
-sudo useradd \
-  --system \
-  --home-dir /var/lib/ords \
-  --create-home \
-  --shell /sbin/nologin \
-  --comment "Oracle REST Data Services owner" \
-  ords
+```console
+sudo useradd --system --home-dir /var/lib/ords --create-home --shell /sbin/nologin --comment "Oracle REST Data Services owner" ords
 
 sudo usermod -aG ords tomcat
 
@@ -84,14 +78,14 @@ sudo ln -sfn /opt/ords/${ORDS_VER} /opt/ords/current
 *Oracle recommends keeping the ORDS configuration directory separate from the application files, and adding the ORDS `bin` folder to the OS path is recommended.*
 
 Optional convenience symlink:
-```
+```console
 sudo ln -sfn /opt/ords/current/bin/ords /usr/local/bin/ords
 ords --version
 ```
 
 ## Install/configure ORDS into `FREEPDB1`
 Run ORDS installer as the ords OS account:
-```
+```console
 sudo -u ords -H /opt/ords/current/bin/ords --config /etc/ords/config install --interactive --log-folder /var/log/ords
 ```
 Use these answers:
@@ -112,7 +106,7 @@ Use these answers:
 *For the first install, using **SYS AS SYSDBA** is the simple route. Oracle also provides `ords_installer_privileges.sql` if you prefer to grant installer privileges to another DB user instead of using **SYS**.*
 
 After install, fix permissions so Tomcat can read the ORDS configuration:
-```
+```console
 sudo chown -R ords:ords /etc/ords/config /var/log/ords
 sudo chmod -R u=rwX,g=rX,o= /etc/ords/config /var/log/ords
 sudo find /etc/ords/config -type f -exec chmod 640 {} \;
@@ -121,7 +115,7 @@ sudo find /etc/ords/config -type d -exec chmod 750 {} \;
 
 ## If you use APEX, enable PL/SQL Gateway mode
 APEX requires PL/SQL Gateway access through ORDS. Oracle documents setting `plsql.gateway.mode` to `proxied`.
-```
+```console
 sudo -u ords -H /opt/ords/current/bin/ords --config /etc/ords/config  config set plsql.gateway.mode proxied
 ```
 
@@ -129,7 +123,7 @@ sudo -u ords -H /opt/ords/current/bin/ords --config /etc/ords/config  config set
 For Tomcat deployment, Oracle says ORDS must know the configuration directory; one supported way is setting the config.url Java system property before starting Tomcat.([docs.oracle.com](https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/26.1/ordig/deploying-and-monitoring-oracle-rest-data-services.html))
 
 Edit Tomcat environment:
-```
+```console
 sudo cp /etc/sysconfig/tomcat /etc/sysconfig/tomcat.bak.$(date +%F_%H%M%S)
 
 sudo tee -a /etc/sysconfig/tomcat >/dev/null <<'EOF'
@@ -141,7 +135,7 @@ EOF
 
 ## Deploy ORDS WAR into Tomcat
 Oracle’s Tomcat deployment step is basically: put `ords.war` into Tomcat’s `webapps` folder; the WAR file name determines the context root, so `ords.war` becomes `/ords`.
-```
+```console
 sudo cp /opt/ords/current/ords.war /var/lib/tomcat/webapps/ords.war
 sudo chown tomcat:tomcat /var/lib/tomcat/webapps/ords.war
 
@@ -149,22 +143,22 @@ sudo systemctl restart tomcat
 ```
 
 Watch logs:
-```
+```console
 sudo journalctl -u tomcat -f
 ```
 Or:
-```
+```console
 sudo ls -l /var/log/tomcat
 sudo tail -f /var/log/tomcat/*
 ```
 Test locally:
-```
+```console
 curl -I http://localhost:8080/ords/
 curl http://localhost:8080/ords/
 ```
 
 ## Open the firewall
-```
+```console
 sudo systemctl enable --now firewalld
 
 sudo firewall-cmd --permanent --add-port=8080/tcp
