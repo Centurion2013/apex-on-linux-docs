@@ -4,7 +4,7 @@
 At this moment you must complete [Oracle Linux installation procedure](linux_installation.md)
 
 ## Install the Oracle AI Database Preinstallation RPM
-```
+```console
 sudo dnf -y install oracle-ai-database-preinstall-26ai
 ```
 
@@ -19,11 +19,11 @@ Download `oracle-ai-database-free-26ai-23.26.2-1.el9.x86_64.rpm` RPM file requir
 *Note: time after time the Oracle updates version available to download, so exact file names can be different. Take it in account.*
 
 ## Install database software
-```
+```console
 sudo dnf -y install oracle-ai-database-free-26ai-23.26.2-1.el9.x86_64.rpm
 ```
 or
-```
+```console
 sudo dnf -y install oracle-ai-database-free*
 ```
 ## Creating and Configuring an Oracle AI Database
@@ -36,11 +36,11 @@ The parameters set in this file are explained in detail in the silent mode insta
 To create the database with the default settings:
 
 * Log in as root using sudo.
-```
+```console
 sudo -s
 ```
 Run the service configuration script:
-```
+```console
 /etc/init.d/oracle-free-26ai configure
 ```
 At the command prompt, specify a password for the SYS, SYSTEM, and PDBADMIN administrative user accounts. Oracle recommends that your password should be at least 8 characters in length, contain at least 1 upper case character, 1 lower case character, and 1 digit [0-9].
@@ -62,15 +62,15 @@ After the configuration completes, the database and listener are started.
 ## Setting Oracle AI Database Free Environment Variables
 
 - Switch to user `oracle`
-```
+```console
 sudo -iu oracle
 ```
 - Edit `.bash_profile`
-```
+```console
 nano ~/.bash_profile
 ```
 Add this at the end:
-```
+```console
 export ORACLE_SID=FREE
 export ORACLE_HOME=/opt/oracle/product/26ai/dbhomeFree
 export PATH=$ORACLE_HOME/bin:$PATH
@@ -78,7 +78,7 @@ export NLS_LANG=AMERICAN_AMERICA.AL32UTF8
 ```
 Save and exit.
 - Reload the profile
-```
+```console
 source ~/.bash_profile
 ```
 At this point you can call sqlplus under oracle user without path specification
@@ -87,24 +87,24 @@ At this point you can call sqlplus under oracle user without path specification
 Please make sure the listener port (`1521`) is accessible from outside.
 
 To check the firewall status:
-```
+```console
 sudo firewall-cmd --state
 ```
 if it says:
-```
+```console
 running
 ```
 open port `1521`:
-```
+```console
 sudo firewall-cmd --add-port=1521/tcp --permanent
 sudo firewall-cmd --reload
 ```
 then verify:
-```
+```console
 sudo firewall-cmd --list-ports
 ```
 you should see:
-```
+```console
 1521/tcp
 ```
 
@@ -114,29 +114,29 @@ At this moment Oracle AI Database Free is installed and accessible to connect.
 Oracle recommends that you configure the system to automatically start Oracle AI Database Free when the system starts, and to automatically shut it down when the system shuts down.
 
 To automate the start up and shutdown of the listener and database, run the following commands as `root`:
-```
+```console
 $ sudo -s
 ```
 For Oracle Linux 8 and Oracle Linux 9:
-```
+```console
 # systemctl daemon-reload
 # systemctl enable oracle-free-26ai
 ```
 
 ### Checking status
-```
+```console
 /etc/init.d/oracle-free-26ai status
 ```
 ### Starting
-```
+```console
 systemctl start oracle-free-26ai
 ```
 ### Stopping
-```
+```console
 systemctl stop oracle-free-26ai
 ```
 ### Restarting
-```
+```console
 systemctl restart oracle-free-26ai
 ```
 
