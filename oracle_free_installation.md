@@ -46,9 +46,10 @@ At the command prompt, specify a password for the SYS, SYSTEM, and PDBADMIN admi
 The same password will be used for these accounts. The password should conform to the Oracle recommended standards. See Oracle AI Database Security Guide for more information about guidelines for securing passwords
 After the configuration completes, the database and listener are started.
 
-| Item | Description |
+## Configuration, Database Files and Logs Location
+| File Name and Location | Purpose |
 |------|-------------|
-| Oracle base | This is the root of the Oracle AI Database Free directory tree. |
+| /opt/oracle |Oracle base. This is the root of the Oracle AI Database Free directory tree. |
 | /opt/oracle/product/26ai/dbhomeFree | Oracle home. This home is where the Oracle AI Database Free is installed. It contains the directories of the Oracle AI Database Free executables and network files. |
 | /opt/oracle/oradata/FREE | Database files. |
 | /opt/oracle/diag subdirectories | Diagnostic logs. The database alert log is /opt/oracle/diag/rdbms/free/FREE/trace/alert_FREE.log |
