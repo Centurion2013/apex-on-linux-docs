@@ -34,29 +34,23 @@ sudo cp /opt/jri/jri-3.0.0-jasper-7.0.1/webapp/jri.war /var/lib/tomcat/webapps/j
 sudo chown tomcat:tomcat /var/lib/tomcat/webapps/jri.war
 ```
 
-## Deploy JRI_Assistant WAR into Tomcat
+## Deploy JRI-Assistant WAR into Tomcat
 
 ```console
-sudo cp /tmp/jri_assistant.war /var/lib/tomcat/webapps/jri_assistant.war
-sudo chown tomcat:tomcat /var/lib/tomcat/webapps/jri_assistant.war
+sudo cp /tmp/jri-assistant.war /var/lib/tomcat/webapps/jri-assistant.war
+sudo chown tomcat:tomcat /var/lib/tomcat/webapps/jri-assistant.war
 ```
 
 ## Set Environement Variable
 ```console
-sudo -iu tomcat
-
-nano ~/.bash_profile
+sudo nano /etc/sysconfig/tomcat
 ```
-Make changes in the file:
+Make changes in the file by adding at the end:
 ```console
-export OC_JASPER_CONFIG_HOME=/opt/jri/jri-3.0.0-jasper-7.0.1
-export JRI_REPORTS_ROOT=/opt/jri/jri-3.0.0-jasper-7.0.1/reports
+OC_JASPER_CONFIG_HOME=/opt/jri/jri-3.0.0-jasper-7.0.1
+JRI_REPORTS_ROOT=/opt/jri/jri-3.0.0-jasper-7.0.1/reports
 ```
 Save and exit.
-Reload the profile
-```console
-source ~/.bash_profile
-```
 
 ## Make changes in `/opt/jri/jri-3.0.0-jasper-7.0.1/conf/application.properties` according your needs
 See JasperReportsIntegration documentation.
