@@ -75,9 +75,9 @@ alter session set container = FREEPDB1;
 *Oracle’s APEX guide says `apex_rest_config.sql` must be run after a new APEX installation when using ORDS, because APEX static files and workspace/application static files are served through ORDS-related REST support.*
 
 ## Copy APEX images to Tomcat
-Because you used /i/ during apexins.sql, Tomcat must serve APEX static resources from /i/.
+Because you used `/i/` during apexins.sql, Tomcat must serve APEX static resources from `/i/`.
 
-Oracle says the APEX images directory must be copied to a local filesystem accessible by ORDS/Tomcat unless you choose the Oracle CDN.
+*Oracle says the APEX images directory must be copied to a local filesystem accessible by ORDS/Tomcat unless you choose the Oracle CDN.*
 
 ```console
 sudo rm -rf /var/lib/tomcat/webapps/i
@@ -86,6 +86,25 @@ sudo mkdir -p /var/lib/tomcat/webapps/i
 sudo rsync -a /opt/apex/apex/images/ /var/lib/tomcat/webapps/i/
 
 sudo chown -R tomcat:tomcat /var/lib/tomcat/webapps/i
+```
+
+## Install runtime language translations
+To load `Ukrainian` translations:
+
+```console
+sudo -iu oracle
+
+cd /opt/apex/apex/builder/uk
+
+sqlplus / as sysdba
+
+```
+
+SQL:
+```console
+alter session set container = FREEPDB1;
+@load_uk.sql
+exit
 ```
 
 ## Restart Tomcat
