@@ -109,7 +109,7 @@ you should see:
 At this moment Oracle AI Database Free is installed and accessible to connect.
 
 ## Automating Shutdown and Start-Up
-Oracle recommends that you configure the system to automatically start Oracle AI Database Free when the system starts, and to automatically shut it down when the system shuts down.
+*Oracle recommends that you configure the system to automatically start Oracle AI Database Free when the system starts, and to automatically shut it down when the system shuts down.*
 
 To automate the start up and shutdown of the listener and database, run the following commands as `root`:
 ```console
