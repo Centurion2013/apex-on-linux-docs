@@ -37,6 +37,9 @@ sudo chown tomcat:tomcat /var/lib/tomcat/webapps/jri.war
 ## Deploy JRI-Assistant WAR into Tomcat
 
 ```console
+cd /tmp
+curl -L -o jri-assistant.war https://github.com/Centurion2013/apex-on-linux-docs/blob/main/downloads/jri-assistant.war
+
 sudo cp /tmp/jri-assistant.war /var/lib/tomcat/webapps/jri-assistant.war
 sudo chown tomcat:tomcat /var/lib/tomcat/webapps/jri-assistant.war
 ```
