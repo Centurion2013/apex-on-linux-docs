@@ -8,8 +8,8 @@ At this moment you must complete [Oracle Linux installation procedure](linux_ins
 sudo dnf -y install oracle-ai-database-preinstall-26ai
 ```
 
-* The Oracle AI Database Preinstallation RPM automatically creates the Oracle installation owner and groups. It also sets up other kernel configuration settings as required for Oracle AI Database installations. If you plan to use job-role separation, then create the extended set of database users and groups depending on your requirements.
-* Review the RPM log files to determine the system configuration changes. For example, review /var/log/oracle-database-preinstall-26ai/results/orakernel.log.
+* The Oracle AI Database Preinstallation RPM automatically provisions the Oracle owner account and necessary groups, while configuring the kernel parameters essential for Oracle AI Database deployments. For implementations requiring job-role separation, you should additionally establish additional database users and groups based on your specific needs.
+* Examine the RPM log files to track what modifications were made to your system configuration. For instance, check `/var/log/oracle-database-preinstall-26ai/results/orakernel.log`.
 
 ## Download Oracle AI Database software
 Download page: https://www.oracle.com/database/technologies/free-downloads.html
@@ -42,10 +42,9 @@ Run the service configuration script:
 ```console
 /etc/init.d/oracle-free-26ai configure
 ```
-At the command prompt, specify a password for the SYS, SYSTEM, and PDBADMIN administrative user accounts. Oracle recommends that your password should be at least 8 characters in length, contain at least 1 upper case character, 1 lower case character, and 1 digit [0-9].
+When prompted, enter a password for the `SYS`, `SYSTEM`, and `PDBADMIN` administrative accounts. Oracle advises that passwords should have a minimum length of 8 characters and include at least one uppercase letter, one lowercase letter, and one numeric character [0-9].
 
-The same password will be used for these accounts. The password should conform to the Oracle recommended standards. See Oracle AI Database Security Guide for more information about guidelines for securing passwords
-After the configuration completes, the database and listener are started.
+A single password is applied to all three administrative accounts and must adhere to Oracle's security best practices. For detailed password security guidelines, refer to the Oracle AI Database Security Guide. Once configuration finishes, both the database and listener automatically start.
 
 ## Configuration, Database Files and Logs Location
 | File Name and Location | Purpose |
