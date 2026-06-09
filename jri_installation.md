@@ -67,3 +67,13 @@ sudo systemctl start tomcat
 ```console
 sudo journalctl -u tomcat -f
 ```
+
+## JasperReportsIntergration Test
+```console
+localhost:8080/jri
+```
+
+## JRI-Assistant test
+```console
+localhost:8080/jri-assistant/ping
+```
