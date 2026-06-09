@@ -56,7 +56,7 @@ JRI_REPORTS_ROOT=/opt/jri/jri-3.0.0-jasper-7.0.1/reports
 Save and exit.
 
 ## Make changes in `/opt/jri/jri-3.0.0-jasper-7.0.1/conf/application.properties` according your needs
-See JasperReportsIntegration documentation.
+See JasperReportsIntegration [documentation](https://github.com/daust/JasperReportsIntegration/blob/main/src/doc/github/installation-full.md#23-configure-your-database-access).
 
 ## Start Tomcat
 ```console
