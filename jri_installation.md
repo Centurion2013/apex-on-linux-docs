@@ -1,4 +1,5 @@
 # JasperReportsIntegration and JRI Assistant Installation
+Please visit [JusperReportsIntegration repository][jasperReportsIntegrationLink] for additional information.
 
 ## Creating JRI owner user
 
@@ -77,3 +78,6 @@ localhost:8080/jri
 ```console
 localhost:8080/jri-assistant/ping
 ```
+
+
+[jasperReportsIntegrationLink]: https://github.com/daust/JasperReportsIntegration
