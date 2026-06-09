@@ -15,12 +15,10 @@ cd /tmp
 curl -L -o jri-latest.zip https://github.com/daust/JasperReportsIntegration/releases/download/v3.0.0/jri-3.0.0-jasper-7.0.1.zip
 
 sudo mkdir -p /opt/jri/
-sudo unzip -q /tmp/jti-latest.zip -d /opt/jri
+sudo unzip -q /tmp/jri-latest.zip -d /opt/jri
 
 sudo chown -R jri:jri /opt/jri
-sudo chmod -R u=rwX,g=rX,o= /opt/jri
-sudo chmod -R u=rwX,g=rwX,o= /opt/jri/jri-3.0.0-jasper-7.0.1/log
-sudo chmod -R u=rwX,g=rwX,o= /opt/jri/jri-3.0.0-jasper-7.0.1/reports
+sudo chmod -R u=rwX,g=rwX,o= /opt/jri/jri-3.0.0-jasper-7.0.1
 ```
 
 ## Stop Tomcat
