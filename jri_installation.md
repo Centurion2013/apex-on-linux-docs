@@ -1,4 +1,4 @@
-# JasperReportsIntegration and JRI-Assistant Installation
+# JasperReportsIntegration and JRI Assistant Installation
 
 ## Creating JRI owner user
 
