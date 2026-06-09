@@ -34,7 +34,7 @@ sudo cp /opt/jri/jri-3.0.0-jasper-7.0.1/webapp/jri.war /var/lib/tomcat/webapps/j
 sudo chown tomcat:tomcat /var/lib/tomcat/webapps/jri.war
 ```
 
-## Deploy JRI-Assistant WAR into Tomcat
+## Download and deploy JRI-Assistant WAR into Tomcat
 
 ```console
 cd /tmp
