@@ -38,9 +38,9 @@ sqlplus / as sysdba
 ```
 
 Inside SQL*Plus:
+```console
 alter session set container = FREEPDB1;
 
-```console
 spool install_apex_26_1.log
 
 @apexins.sql SYSAUX SYSAUX TEMP /i/
