@@ -6,3 +6,5 @@ based on my own installation and official Oracle documentation.
 * [Oracle Database 26ai Free installation](oracle_free_installation.md)
 * [Tomcat 9 & ORDS Installation](tomcat9_ords_installation.md)
 * [APEX Installation](apex_installation.md)
+* [JasperReportsIntegration and JRI Assistant Installation](jri_installation.md)
+
