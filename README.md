@@ -1,6 +1,6 @@
 # The Manual
 
-There is a step-by-step manual how to deploy Oracle APEX on Oracle Linux 9 OS
+There is a step-by-step manual how to deploy Oracle APEX 26.1 on Oracle Linux 9 OS
 
 * [Oracle Linux 9 installation](linux_installation.md)
 * [Oracle Database 26ai Free installation](oracle_free_installation.md)
