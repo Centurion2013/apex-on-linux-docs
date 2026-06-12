@@ -39,7 +39,7 @@ sudo chown tomcat:tomcat /var/lib/tomcat/webapps/jri.war
 
 ```console
 cd /tmp
-curl -L -o jri-assistant.war https://github.com/Centurion2013/apex-on-linux-docs/blob/main/downloads/jri-assistant.war
+curl -L -o jri-assistant.war https://github.com/Centurion2013/apex-on-linux-docs/releases/download/v.1.0.0/jri-assistant.war
 
 sudo cp /tmp/jri-assistant.war /var/lib/tomcat/webapps/jri-assistant.war
 sudo chown tomcat:tomcat /var/lib/tomcat/webapps/jri-assistant.war
