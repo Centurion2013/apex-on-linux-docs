@@ -1,5 +1,5 @@
 # JasperReportsIntegration and JRI Assistant Installation
-Please visit [JusperReportsIntegration repository][jasperReportsIntegrationLink] for additional information.
+Please visit [JasperReportsIntegration repository][jasperReportsIntegrationLink] for additional information.
 
 ## Creating JRI owner user
 

@@ -63,8 +63,6 @@ grep -i "ORA-\|PLS-\|SP2-" /opt/apex/apex/install_apex_26_1.log
 ## Create the APEX Instance Administrator account
 Inside SQL*Plus:
 ```console
-alter session set container = FREEPDB1;
-
 @apxchpwd.sql
 ```
 
