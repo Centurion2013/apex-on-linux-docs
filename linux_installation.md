@@ -17,3 +17,6 @@ Do update OS software after installation:
 ```console
 sudo dnf update -y
 ```
+
+## Minimal Linux configuration
+To optimize resource consumption, consider choosing a **Minimal** configuration during Linux setup. Refer to the [manual components installation guide](minimal_linux_installation.md) for additional details.

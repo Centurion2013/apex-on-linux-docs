@@ -18,6 +18,11 @@ Download `oracle-ai-database-free-26ai-23.26.2-1.el9.x86_64.rpm` RPM file requir
 
 *Note: time after time the Oracle updates version available to download, so exact file names can be different. Take it in account.*
 
+```console
+cd /tmp
+curl -L -o oracle-ai-database-free-26ai-23.26.2-1.el9.x86_64.rpm https://download.oracle.com/otn-pub/otn_software/db-free/oracle-ai-database-free-26ai-23.26.2-1.el9.x86_64.rpm
+```
+
 ## Install database software
 ```console
 sudo dnf -y install oracle-ai-database-free-26ai-23.26.2-1.el9.x86_64.rpm
