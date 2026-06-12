@@ -15,7 +15,7 @@ sudo systemctl enable --now sshd
 sudo systemctl enable --now firewalld
 ```
 
-## Cockpit, the Linus Web Console
+## Cockpit, the Linux Web Console
 
 Basic install Cockpit:
 ```console
